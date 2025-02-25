@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "build": "npm run lint && tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json",
     "start": "node lib/index.js",
     "watch": "tsc -p tsconfig.build.json --watch --sourceMap true"
   },
