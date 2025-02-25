@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  apifox-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-4444}:${PORT:-4444}"
+    environment:
+      - PORT=${PORT:-4444}
+      - APIFOX_USER_ACCESS_TOKEN=${APIFOX_USER_ACCESS_TOKEN}
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs

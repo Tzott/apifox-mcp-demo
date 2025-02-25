@@ -1,11 +1,44 @@
-node_modules
-lib
-.DS_Store
-logs
-derby.log
+# Node.js 相关忽略文件
+node_modules/
+package-lock.json
+package.json.bak
+yarn.lock
 
+# 环境相关忽略文件
+.env
+.env.local
+.config
+
+# IDE 和编辑器相关
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# 测试和日志文件
+coverage/
+*.log
+*.log.*
+*.tmp
+tmp/
+
+# 构建和输出目录
+dist/
+build/
+
+# 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 其他忽略文件
+lib
 src/test.ts
 debug.js
-dist
 scripts/temp.txt
-.env
