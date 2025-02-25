@@ -1,0 +1,28 @@
+{
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "compilerOptions": {
+    "outDir": "lib",
+    "module": "commonjs",
+    "target": "es2015",
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "allowJs": false,
+    "experimentalDecorators": true,
+    "strict": true,
+    "disableSizeLimit": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noEmit": false,
+    "importHelpers": true
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts", "type.d.ts"],
+  "exclude": []
+}

@@ -1,0 +1,10 @@
+﻿node_modules
+lib
+/.vscode
+.github
+webpack.config.js
+.eslintrc.js
+vite.config.ts
+babel.config.js
+webpack.config.js
+dist

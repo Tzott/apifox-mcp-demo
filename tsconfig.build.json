@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "target": "es2015"
+  },
+  "include": [
+    "src/**/*.ts",
+    "type.d.ts"
+  ]
+}
+

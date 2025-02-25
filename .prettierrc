@@ -1,0 +1,8 @@
+{
+  "singleQuote": true,
+  "useTabs": false,
+  "printWidth": 120,
+  "trailingComma": "all",
+  "organizeImportsSkipDestructiveCodeActions": true,
+  "semi": true
+}

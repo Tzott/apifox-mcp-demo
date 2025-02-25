@@ -1,0 +1,11 @@
+node_modules
+lib
+.DS_Store
+logs
+derby.log
+
+src/test.ts
+debug.js
+dist
+scripts/temp.txt
+.env
