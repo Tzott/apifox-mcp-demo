@@ -1,0 +1,30 @@
+# Git
+.git
+.gitignore
+
+# Node.js
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# 编译输出
+lib
+
+# 环境变量文件
+.env
+.env.*
+
+# 日志
+logs
+*.log
+
+# 编辑器配置
+.vscode
+.idea
+
+# 其他
+md
+README.md
+Dockerfile
+.dockerignore

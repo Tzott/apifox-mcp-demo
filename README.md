@@ -42,6 +42,66 @@ Message endpoint: http://localhost:4444/messages
 HTTP server listening on port 4444
 ```
 
+### 1.6 使用 Docker 部署（可选）
+
+#### 1.6.1 使用 Docker 构建和运行
+
+```shell
+# 构建 Docker 镜像
+docker build -t apifox-mcp-demo .
+
+# 运行容器（默认端口 4444）
+docker run -p 4444:4444 -e APIFOX_USER_ACCESS_TOKEN=你的访问令牌 apifox-mcp-demo
+
+# 自定义端口（例如使用 8090 端口）
+docker run -p 8090:8090 -e PORT=8090 -e APIFOX_USER_ACCESS_TOKEN=你的访问令牌 apifox-mcp-demo
+```
+
+#### 1.6.2 使用 Docker Compose 部署
+
+##### 方法一：通过 .env 文件配置
+
+在 .env 文件中设置环境变量：
+
+```
+PORT=8090  # 自定义端口，默认为 4444
+APIFOX_USER_ACCESS_TOKEN=你的访问令牌
+```
+
+然后启动服务：
+
+```shell
+# 启动服务
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f
+```
+
+##### 方法二：通过命令行设置环境变量
+
+```shell
+# 使用自定义端口启动服务
+PORT=8090 docker-compose up -d
+
+# 查看日志
+docker-compose logs -f
+```
+
+#### 1.6.3 安全注意事项
+
+为了安全起见，请注意以下几点：
+
+1. **不要在 Dockerfile 中硬编码敏感信息**：访问令牌等敏感信息应该始终通过环境变量在运行时传入。
+
+2. **使用安全的方式管理敏感信息**：
+   - 在开发环境中使用 .env 文件（确保 .gitignore 中包含 .env）
+   - 在生产环境中使用环境变量、Docker secrets 或专门的密钥管理服务
+
+3. **不要将包含敏感信息的镜像推送到公共仓库**
+
+4. **定期轮换访问令牌**：定期更新 Apifox 访问令牌以提高安全性
+
 ## 2. 准备 Cursor
 
 ### 2.1 创建一个空白的 Nestjs 项目
