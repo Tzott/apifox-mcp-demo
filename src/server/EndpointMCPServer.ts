@@ -16,7 +16,7 @@ export class EndpointMCPServer {
       {
         projectId: z.number().describe('Apifox 的项目 ID'),
         resourceType: z.literal('api').describe('资源类型。目前只支持 api'),
-        resourceId: z.string().describe('资源 ID'),
+        resourceId: z.number().describe('资源 ID'),
       },
       async ({ projectId, resourceType, resourceId }) => {
         const url = `/v1/projects/${projectId}/export-openapi`;
@@ -30,7 +30,7 @@ export class EndpointMCPServer {
               type: 2,
               format: 'json',
               version: '3.0',
-              apiDetailId: [resourceId],
+              apiDetailId: [Number(resourceId)],
               includeTags: [],
               excludeTags: [],
               checkedFolder: [],

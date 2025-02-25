@@ -10,13 +10,14 @@ export async function apifoxRequest(
   const apifoxBaseURL = 'https://api.apifox.com/api';
 
   const response = await fetch(apifoxBaseURL + url, {
+    ...options,
     headers: {
+      'Content-Type': 'application/json',
       'X-Apifox-Version': '2024-03-28',
       Authorization: `Bearer ${ENV.APIFOX_USER_ACCESS_TOKEN}`,
       'X-Project-Id': options.projectId.toString(),
       ...options.headers,
     },
-    ...options,
   });
 
   const json = await response.json();
