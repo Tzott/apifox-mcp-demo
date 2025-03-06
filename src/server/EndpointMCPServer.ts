@@ -11,17 +11,16 @@ export class EndpointMCPServer {
 
   public registerTools() {
     this.mcpServer.tool(
-      'get_endpoint_openapi_definition_by_project_cooperation_link',
-      '通过 Apifox 的协作链接，格如：https://app.apifox.com/link/project/:projectId/apis/:resourceType-:resourceId，来获取此接口的 OpenAPI 定义',
+      'get_endpoint_oas_by_link',
+      '通过 Apifox 的协作链接来获取此接口的 OpenAPI Specification 格式定义，协作链接格式如下：https://app.apifox.com/link/project/{projectId}/apis/api-{endpointId} ，{projectId} 为 Apifox 的项目 ID，{endpointId} 为接口（Endpoint）的 ID，由于该链接是无法直接访问的，所以需要通过本工具来获取。如发现有符合条件的链接，则调用本工具',
       {
         projectId: z.number().describe('Apifox 的项目 ID'),
-        resourceType: z.literal('api').describe('资源类型。目前只支持 api'),
-        resourceId: z.number().describe('资源 ID'),
+        endpointId: z.number().describe('接口（Endpoint）的 ID'),
       },
-      async ({ projectId, resourceType, resourceId }) => {
+      async ({ projectId, endpointId }) => {
         const url = `/v1/projects/${projectId}/export-openapi`;
         try {
-          console.log('Fetching openapi url', projectId, resourceType, resourceId);
+          console.log('Fetching openapi url', projectId, endpointId);
           const file = await apifoxRequest(url, {
             projectId,
             method: 'POST',
@@ -30,7 +29,7 @@ export class EndpointMCPServer {
               type: 2,
               format: 'json',
               version: '3.0',
-              apiDetailId: [Number(resourceId)],
+              apiDetailId: [Number(endpointId)],
               includeTags: [],
               excludeTags: [],
               checkedFolder: [],
